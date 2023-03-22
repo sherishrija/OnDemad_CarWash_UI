@@ -1,0 +1,91 @@
+<div style="overflow: hidden;" id="ordercomponent">
+    <div class="Container" style="color:whitesmoke; background-color: #0bc1f9; padding: 10px;">
+        <div class="row">
+            <div class="col-md-10">
+                <h1 style="color: black; text-align: center; margin-left: 30px;">Order Placed Successfully</h1>
+            </div>
+            <div class="col-md-2">
+                <button type="button" [routerLink]="['']" style="padding: 5px; width:80px; margin: 10px;"
+                    class="btn btn-primary" (click)="LogOut()">Logout</button>
+                <button type="button" [routerLink]="['/dashboard']" style="padding: 5px; width:80px; margin: 10px;"
+                    class="btn btn-primary">Back</button>
+
+                <button (click)="DownloadOrder('ordercomponent')" style="padding: 5px; margin: 10px;"
+                    class="btn btn-primary">Download Invoice</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="rowcontent" style="padding-top: 2%;" >
+        <div class="container">
+            <div class="row content">
+                <div class="boxContainer ">
+                    <table class="table table-bordered ">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h4> Order Id</h4>
+                                </th>
+                                <th>
+                                    <h4>Washing Instructions</h4>
+                                </th>
+                                <th>
+                                    <h4>Date</h4>
+                                </th>
+                                <th>
+                                    <h4>Status</h4>
+                                </th>
+                                <th>
+                                    <h4>Package Name</h4>
+                                </th>
+                                <th>
+                                    <h4>Price</h4>
+                                </th>
+                                <th>
+                                    <h4>City</h4>
+                                </th>
+                                <th>
+                                    <h4>Pincode</h4>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    {{singleOrder.id}}
+                                </td>
+                                <td>
+                                    {{singleOrder.washingInstructions}}
+                                </td>
+                                <td>
+                                    {{singleOrder.date}}
+                                </td>
+                                <td>
+                                    {{singleOrder.status}}
+                                </td>
+                                <td>
+                                    {{singleOrder.packageName}}
+                                </td>
+                                <td>
+                                    {{singleOrder.price}}
+                                </td>
+                                <td>
+                                    {{singleOrder.city}}
+                                </td>
+                                <td>
+                                    {{singleOrder.pincode}}
+                                </td>
+
+                               
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

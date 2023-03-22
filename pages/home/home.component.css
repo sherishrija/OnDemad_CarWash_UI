@@ -1,0 +1,40 @@
+    .banner {
+    background-image: url(https://th.bing.com/th/id/OIP.dJ0OFRCYnzYxLWFu249f8wHaEK?w=298&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7);
+    height: 800px;
+    background-position: center top;
+    background-size:cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .content {
+    top: 30%;
+    left: 20%;
+    position: absolute;
+} */
+
+.content h1 {
+    color: white;
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.content a {
+    text-decoration: none;
+    background-color: #fff;
+    color: var(--primary-color);
+    padding: 15px 20px;
+    border-radius: 5px;
+}
+
+.content a:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.link{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+}

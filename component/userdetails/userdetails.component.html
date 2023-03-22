@@ -1,0 +1,159 @@
+<div style="overflow: hidden;">
+  <div class="Container" style="color:whitesmoke; background-color: #0bc1f9; padding: 10px;">
+    <div class="row">
+      <div class="col-md-10">
+        <h1 style="color: black; text-align: center; margin-left: 30px;">Users</h1>
+      </div>
+      <div class="col-md-2">
+        <button type="button" [routerLink]="['']" style="padding: 5px; width:80px; margin: 10px;"
+          class="btn btn-primary" (click)="LogOut()">Logout</button>
+        <button type="button" [routerLink]="['/dashboard']" style="padding: 5px; width:80px; margin: 10px;"
+          class="btn btn-primary">Back</button>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="rowcontent" style="padding-top: 2%;">
+    <div class="container">
+      <div class="row content">
+        <div class="boxContainer">
+          <div id="addUser" class="col-md-2">
+          
+            <div class="modal fade" id="exampleModel" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+
+                    <form method="post" #form="ngForm" (ngSubmit)="UpdateUser(userL)">
+
+                     
+                      <div class="form-group">
+                        <label for="validationCustom05" class="form-label">Status</label>
+                        <input type="text" class="form-control" name="status" [(ngModel)]="userL.status"
+                          value="{{userL.status}}">
+
+                      </div>
+
+                      <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-primary">Update</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+        <br>
+
+        <div class="Userstable">
+          <table class="table table-bordered ">
+            <thead>
+              <tr>
+                <th>
+                  <h4>User Id</h4>
+                </th>
+                <th>
+                  <h4>First Name</h4>
+                </th>
+                <th>
+                  <h4>Last Name</h4>
+                </th>
+                <th>
+                  <h4>Phone No</h4>
+                </th>
+                <th>
+                  <h4>Email</h4>
+                </th>
+               
+                <th>
+                  <h4>Address</h4>
+                </th>
+                <th>
+                  <h4>Role</h4>
+                </th>
+                <th>
+                  <h4>Status</h4>
+                </th>
+                <th>
+                  <h4>Action</h4>
+                </th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of Users">
+                <td>
+                  {{user.userId}}
+                </td>
+                <td>
+                  {{user.firstName}}
+                </td>
+                <td>
+                  {{user.lastName}}
+                </td>
+                <td>
+                  {{user.phoneNo}}
+                </td>
+                <td>
+                  {{user.email}}
+                </td>
+               
+                <td>
+                  {{user.address}}
+                </td>
+                <td>
+                  {{user.role}}
+                </td>
+
+                <td>
+                  {{user.status}}
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary" id=edit data-bs-toggle="modal"
+                    data-bs-target="#exampleModel" (click)="SetUserValues(user)"><i
+                      class="fa-solid fa-pen-to-square"></i></button>
+
+                  <button type="button" class="btn btn-danger" id=delete (click)="DeleteUser(user)"><i
+                      class="fa-solid fa-person-circle-minus"></i></button>
+                </td>
+
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="Container" id="footer"
+    style="color:rgb(0, 0, 0); text-align: center;  background-color: #0bc1f9; padding: 10px;">
+    <footer>
+      <span>
+        <strong>
+          On demand car wash System -
+        </strong>
+      </span>
+    </footer>
+  </div>

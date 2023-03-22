@@ -1,0 +1,119 @@
+<div style="overflow: hidden;">
+  <div class="Container" style="color:whitesmoke; background-color: #0bc1f9; padding: 10px;">
+    <div class="row">
+      <div class="col-md-10">
+        <h1 style="color: black; text-align: center; margin-left: 30px;">Order details</h1>
+      </div>
+      <div class="col-md-2">
+        <button type="button" [routerLink]="['']" style="padding: 5px; width:80px; margin: 10px;"
+          class="btn btn-primary" (click)="LogOut()">Logout</button>
+        <button type="button" [routerLink]="['/dashboard']" style="padding: 5px; width:80px; margin: 10px;"
+          class="btn btn-primary">Back</button>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="rowcontent" style="padding-top: 2%;">
+    <div class="container">
+      <div class="row content">
+        <div class="boxContainer">
+          <div id="addpackage" class="col-md-2">
+        
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              AddOrder
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+
+
+
+
+                    <form method="post" #form="ngForm" (ngSubmit)="onSubmit()">
+
+                      <div class="    form-group">
+                        <label for="validationCustom01" class="form-label">washing Instructions</label>
+                        <input type="text" class="form-control" id="washingInstructions" name="washingInstructions"
+                          [(ngModel)]="orderL.washingInstructions" required>
+
+                      </div>
+
+                      <div class="form-group">
+                        <label for="validationCustom05" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" name="date" [(ngModel)]="orderL.date"
+                          required>
+
+                      </div>
+
+                      <div class="form-group">
+                        <label for="validationCustom05" class="form-label">Status </label>
+                        <input [disabled]="true" type="text" class="form-control" id="status" name="status"
+                          [(ngModel)]="orderL.status" required>
+
+                      </div>
+
+
+
+                      <div class="form-group">
+                        <label for="validationCustom05" class="form-label">Package Name</label>
+                        <input [disabled]="true" type="text" class="form-control" id="name" name="name"
+                          [(ngModel)]="orderL.name" required>
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="validationCustom05" class="form-label">Price</label>
+                        <input [disabled]="true" type="text" class="form-control" id="price" name="price"
+                          [(ngModel)]="orderL.price" required>
+
+                      </div>
+
+                      <div class="form-group">
+                        <label for="validationCustom05" class="form-label">City</label>
+                        <input type="text" class="form-control" id="city" name="city" [(ngModel)]="orderL.city"
+                          required>
+
+                      </div>
+
+                      <div class="form-group">
+                        <label for="validationCustom05" class="form-label">Pincode</label>
+                        <input type="text" class="form-control" id="pincode" name="pincode" [(ngModel)]="orderL.pincode"
+                          required>
+
+                      </div>
+
+                      <div class="modal-footer">
+
+                        <!-- [routerLink]="['/orders']" -->
+                        <button type="submit" class="btn btn-primary" [disabled]="!form.valid"
+                          >Order Now</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+           
+           
+            <br>
+
+           
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>

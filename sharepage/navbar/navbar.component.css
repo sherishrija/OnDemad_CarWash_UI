@@ -1,0 +1,17 @@
+/* 
+
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.nav-link {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: underline;
+}
+.navbar{
+    background: transparent ! important;
+
+} */

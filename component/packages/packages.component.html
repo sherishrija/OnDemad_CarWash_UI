@@ -1,0 +1,204 @@
+<div style="overflow: hidden;">
+    <div class="Container" style="color:whitesmoke; background-color: #0bc1f9; padding: 10px;">
+      <div class="row">
+        <div class="col-md-10">
+          <h1 style="color: black; text-align: center; margin-left: 30px;">Packages</h1>
+        </div>
+        <div class=" col-md-2">
+          <button type="button" [routerLink]="['']" style="padding: 5px; width:80px; margin: 10px;"
+            class="btn btn-primary" (click)="LogOut()">Logout</button>
+          <button type="button" [routerLink]="['/dashboard']" style="padding: 5px; width:80px; margin: 10px;"
+            class="btn btn-primary">Back</button>
+  
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  
+    <div class="rowcontent" style="padding-top: 2%;">
+      <div class="container">
+        <div class="row content">
+          <div class="boxContainer">
+            <div id="addpackage" class="col-md-2">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Addpackage
+              </button>
+  
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Add Package</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+  
+  
+  
+  
+                      <form method="post" #form="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="    form-group">
+                          <label for="validationCustom01" class="form-label">Name</label>
+                          <input type="text" class="form-control" name="name" [(ngModel)]="packageL.name" required>
+  
+                        </div>
+  
+                        <div class="form-group">
+                          <label for="validationCustom05" class="form-label">price</label>
+                          <input type="text" class="form-control" name="price" [(ngModel)]="packageL.price" required>
+  
+                        </div>
+  
+                        <div class="form-group">
+                          <label for="validationCustom05" class="form-label">Status </label>
+                          <input type="text" class="form-control" name="status" [(ngModel)]="packageL.status"
+                            required>
+  
+                        </div>
+  
+                        <div class="modal-footer">
+  
+                          <button type="submit" class="btn btn-primary" [disabled]="!form.valid"
+                            >Save changes</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+  
+              <!-- update code for packages for admindashboard-->
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModel" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Update Package</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+  
+                      <form method="post" #form="ngForm" (ngSubmit)="UpdatePackage(packageL)">
+  
+                        <div class="form-group">
+                          <label for="validationCustom02" class="form-label"> Id</label>
+                          <input type="text" class="form-control" name="id" [(ngModel)]="packageL.id"
+                            value="{{packageL.id}}">
+                        </div>
+  
+                        <div class="    form-group">
+                          <label for="validationCustom01" class="form-label">Name</label>
+                          <input type="text" class="form-control" name="name" [(ngModel)]="packageL.name"
+                            value="{{packageL.name}}">
+  
+                        </div>
+
+  
+                        <div class=" form-group">
+                          <label for="validationCustom05" class="form-label">price</label>
+                          <input type="text" class="form-control" name="price" [(ngModel)]="packageL.price"
+                            [(ngModel)]="packageL.price">
+  
+                        </div>
+  
+                        <div class="form-group">
+                          <label for="validationCustom05" class="form-label">Status</label>
+                          <input type="text" class="form-control" name="status" [(ngModel)]="packageL.status"
+                            value="packageL.status">
+  
+                        </div>
+  
+                        <div class="modal-footer">
+  
+                          <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+  
+  
+  
+  
+  
+  
+  
+            </div>
+          </div>
+          <br>
+  
+          <div class="packagestable">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>
+                    <h4>Id</h4>
+                  </th>
+                  <th>
+                    <h4>Package Name</h4>
+                  </th>
+                  <th>
+                    <h4>Price</h4>
+                  </th>
+                  <th>
+                    <h4>Status</h4>
+                  </th>
+                  <th>
+                    <h4>Action</h4>
+                  </th>
+  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let pac of packages">
+                  <td>
+                    {{pac.id}}
+                  </td>
+                  <td>
+                    {{pac.name}}
+                  </td>
+                  <td>
+                    {{pac.price}}
+                  </td>
+                  <td>
+                    {{pac.status}}
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-primary "  id=edit data-bs-toggle="modal" data-bs-target="#exampleModel"
+                      (click)="SetPackageValues(pac)"><i class="fa-solid fa-pen-to-square"></i></button>
+  
+                     <button type="button" class="btn btn-danger"   id=delete (click)="DeletePackage(pac)"><i
+                        class="fa-solid fa-person-circle-minus"></i></button>
+                  </td>
+  
+                </tr>
+              </tbody>
+  
+            </table>
+          </div>
+        </div>
+  
+      </div>
+  
+    </div>
+    <div class="Container" id="footer"
+      style="color:rgb(0, 0, 0); text-align: center;  background-color: #0bc1f9; padding: 10px;">
+      <footer>
+        <span>
+          <strong>
+            On demand car wash System -
+          </strong>
+        </span>
+      </footer>
+    </div>
+  </div>

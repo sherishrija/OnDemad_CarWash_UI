@@ -1,0 +1,185 @@
+<div style="overflow: hidden;">
+    <div class="Container" style="color:whitesmoke; background-color: #0bc1f9; padding: 10px;">
+      <div class="row">
+        <div class="col-md-10">
+          <h1 style="color: black; text-align: center; margin-left: 30px;">Car Details</h1>
+        </div>
+        <div class="col-md-2">
+          <button type="button" [routerLink]="['']" style="padding: 5px; width:80px; margin: 10px;"
+            class="btn btn-primary" (click)="LogOut()">Logout</button>
+          <button type="button" [routerLink]="['/dashboard']" style="padding: 5px; width:80px; margin: 10px;"
+            class="btn btn-primary">Back</button>
+  
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  
+    <div class="rowcontent" style="padding-top: 2%;">
+      <div class="container">
+        <div class="row content">
+          <div class="boxContainer">
+            <div id="addCar" class="col-md-2">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                AddCar
+              </button>
+  
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Add Car</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+  
+  
+  
+  
+                      <form method="post" #form="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="    form-group">
+                          <label for="validationCustom01" class="form-label"> Car Model</label>
+                          <input type="text" class="form-control" name="model" [(ngModel)]="carL.model" required>
+  
+                        </div>
+
+                        <div class="form-group">
+                          <label for="validationCustom05" class="form-label">Status </label>
+                          <input type="text" class="form-control" name="status" [(ngModel)]="carL.status"
+                            required>
+  
+                        </div>
+  
+                        <div class="modal-footer">
+  
+                          <button type="submit" class="btn btn-primary" [disabled]="!form.valid"
+                            [routerLink]="['/car']">Save changes</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+  
+              <!-- update code for drug-->
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModel" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Update Car</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+  
+                      <form method="post" #form="ngForm" (ngSubmit)="UpdateCar(carL)">
+  
+                        <div class="form-group">
+                          <label for="validationCustom02" class="form-label">Car Id</label>
+                          <input type="text" class="form-control" name="id" [(ngModel)]="carL.id"
+                            value="{{carL.id}}">
+                        </div>
+
+                        <!-- <div class="form-group">
+                          <label for="validationCustom02" class="form-label">Car Name</label>
+                          <input type="text" class="form-control" name="name" [(ngModel)]="carL.id"
+                            value="{{carL.id}}">
+                        </div> -->
+
+  
+                        <div class="    form-group">
+                          <label for="validationCustom01" class="form-label">Model</label>
+                          <input type="text" class="form-control" name="name" [(ngModel)]="carL.model"
+                            value="{{carL.model}}">
+  
+                        </div>
+  
+                        <div class="form-group">
+                          <label for="validationCustom05" class="form-label">Status</label>
+                          <input type="text" class="form-control" name="status" [(ngModel)]="carL.status"
+                            value="carL.status">
+  
+                        </div>
+  
+                        <div class="modal-footer">
+  
+                          <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+  
+  
+  
+  
+  
+  
+  
+            </div>
+          </div>
+          <br>
+  
+          <div class="Carstable" >
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>
+                    <h4>Id</h4>
+                  </th>
+                  <th>
+                    <h4>Car Model</h4>
+                  </th>
+                  <th>
+                    <h4>Status</h4>
+                  </th>
+                  <th>
+                    <h4>Action</h4>
+                  </th>
+  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cars of Cars">
+                  <td>
+                    {{cars.id}}
+                  </td>
+                  <td>
+                    {{cars.model}}
+                  </td>
+                  <td>
+                    {{cars.status}}
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-primary"  id=edit data-bs-toggle="modal" data-bs-target="#exampleModel"
+                      (click)="SetCarValues(cars)"><i class="fa-solid fa-pen-to-square"></i></button>
+  
+                    <!-- <button type="button" class="btn btn-danger"  id=delete (click)="DeleteCar(cars)"><i
+                        class="fa-solid fa-person-circle-minus"></i></button> -->
+
+                        <button type="button" class="btn btn-danger"   id=delete (click)="DeleteCar(cars)"><i
+                          class="fa-solid fa-person-circle-minus"></i></button>
+                  </td>
+  
+                </tr>
+              </tbody>
+  
+            </table>
+          </div>
+        </div>
+  
+      </div>
+  
+    </div>
+    
+  </div>
